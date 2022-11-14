@@ -1,30 +1,35 @@
-#Для импорта
+# Для импорта
 import random
 import os
 from hangman_art import stages, logo
 from hangman_words import word_list
 
 os.system('clear')
+
+
 def clear():
     os.system('clear')
+
+
 print(logo)
-#Для цикла
+# Для цикла
+
 game_is_finished = False
 lives = len(stages) - 1
-#Выбирает рандом слово,из листа
+# Выбирает рандом слово,из листа
 chosen_word = random.choice(word_list)
-#Считает сколько цифр в слове
+# Считает сколько цифр в слове
 word_length = len(chosen_word)
 
 display = []
-#печатает сколько "_" находиться в слове
+# печатает сколько "_" находиться в слове
 for _ in range(word_length):
     display += "_"
-#Цикл
+# Цикл
 while not game_is_finished:
     guess = input("Выбери букву ").lower()
 
-    #Функция очищает консоль
+    # Функция очищает консоль
     clear()
 
     if guess in display:
@@ -42,7 +47,7 @@ while not game_is_finished:
         if lives == 0:
             game_is_finished = True
             print("Ты проиграл.")
-#Цикл закончен если    
+    # Цикл закончен если
     if not "_" in display:
         game_is_finished = True
         print("Ты выиграл.")
